@@ -6,7 +6,7 @@ const AuthProvider = ({children}) => {
     let [auth,setAuth] = useState(
         {
             user: null,
-            token: "This is a token"
+            token: ""
         }
     )
     

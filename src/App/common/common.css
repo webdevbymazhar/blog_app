@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+Form{
+    width: 24%;
+    padding: 60px 40px;
+    border-radius: 10px;
+    margin-top: 100px;
+    border: 1px solid black;
+    height: 450px;
+    
+
+}
+
+Form input:hover{
+outline: none;
+
+}
+
+Form h4{
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
+
+
+/* Form.Label{
+    margin-top: 25px;
+} */
+
+
+@media (max-width:1300px) {
+    Form{
+        width:50%
+    }
+}
+
+@media (max-width:650px) {
+    Form{
+        width:100%
+    }
+}

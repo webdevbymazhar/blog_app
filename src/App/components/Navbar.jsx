@@ -1,60 +1,48 @@
-import React, { useState } from 'react'
-import {
-    MDBNavbar,
-    MDBContainer,
-    MDBNavbarBrand,
-    MDBIcon,
-    MDBNavbarNav,
-    MDBNavbarItem,
-    MDBNavbarLink,
-    MDBNavbarToggler,
-    MDBCollapse,
-    MDBBtn,MDBInputGroup
-  } from 'mdb-react-ui-kit';
+import React from 'react'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { Link, useNavigate } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
-const Navbar = () => {
-
-    const [openNavText, setOpenNavText] = useState(false);
-    
+const CommonNavbar = () => {
+  let router = useNavigate()
+  const submit = () => {
+    confirmAlert({
+      title: 'Log Out',
+      message: 'Are you sure you want to logout ?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => router("login/")
+        },
+        {
+          label: 'No',
+          onClick: () => router("/")
+        }
+      ]
+    });
+  };
   return (
     <div>
-      <MDBNavbar expand='lg' light bgColor='light'>
-      <MDBContainer fluid>
-        <MDBNavbarBrand style={{fontSize:"30px"}} href='#'><span style={{color:"#f56f42"}}>BlogItUp</span><span style={{fontWeight:"bold"}}>  !</span></MDBNavbarBrand>
-        <MDBNavbarToggler
-          type='button'
-          data-target='#navbarText'
-          aria-controls='navbarText'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
-          onClick={() => setOpenNavText(!openNavText)}
-        >
-          <MDBIcon icon='bars' fas />
-        </MDBNavbarToggler>
-        <MDBCollapse navbar open={openNavText}>
-          <MDBNavbarNav className=' mb-2 mb-lg-0 text-center'>
-            <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='#'>
-                Home
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href='#'>About</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Contact</MDBNavbarLink>
-            </MDBNavbarItem>
-          </MDBNavbarNav>
-          
-          <MDBInputGroup tag="form" className='d-flex w-auto mb-3'>
-          <input className='form-control' placeholder="Type query" aria-label="Search" type='Search' />
-          <MDBBtn outline>Search</MDBBtn>
-        </MDBInputGroup>
-        </MDBCollapse>
-      </MDBContainer>
-    </MDBNavbar>
+    <Navbar bg="dark" data-bs-theme="dark">
+        <Container >
+          <Navbar.Brand href="#home"><p style={{fontSize:"25px",marginTop:"15px",fontWeight:"bold"}}>BLOG IT UP</p> </Navbar.Brand>
+          <Nav >
+            <Nav.Link active style={{fontSize:"20px"}} ><Link style={{textDecoration:"none",color:"white"}}>Home</Link></Nav.Link>
+            <Nav.Link style={{fontSize:"20px"}} ><Link style={{textDecoration:"none",color:"gray"}}>About</Link></Nav.Link>
+            <Nav.Link style={{fontSize:"20px"}}><Link style={{textDecoration:"none",color:"gray"}}>Contact</Link></Nav.Link>
+            <Nav.Link style={{fontSize:"20px"}}><Link style={{textDecoration:"none",color:"gray"}}>Blogs</Link></Nav.Link>
+            <button onClick={submit} style={{borderRadius:"10px",backgroundColor:"white",marginLeft:"30px",padding:"0px 15px"}}><Nav.Link style={{fontSize:"18px"}}><Link style={{textDecoration:"none",color:"#4c96ff",fontWeight:"bold"}}>LOG OUT</Link></Nav.Link></button>
+          </Nav>
+        </Container>
+      </Navbar>
+     
+      
+    
     </div>
   )
 }
 
-export default Navbar
+export default CommonNavbar

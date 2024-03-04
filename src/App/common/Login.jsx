@@ -1,63 +1,43 @@
 import React from 'react'
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBIcon,
-}
-from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import "./common.css"
+import LogInSignUpNavbar from '../components/LogInSignUpNavbar';
+
+
 
 
 
 const Login = () => {
+
+ 
+  
   return (
-    <>
-    <MDBContainer fluid>
+    <div>
+    <LogInSignUpNavbar/>
+    <div className='container-fluid'>
+      
+    <Form className='mx-auto'>
+    <h4 className='text-center'>LOG IN</h4>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address : </Form.Label>
+        <Form.Control type="email" placeholder="Enter email" />
+      </Form.Group>
 
-<MDBRow className='d-flex justify-content-center align-items-center h-100'>
-  <MDBCol col='12'>
-
-    <MDBCard className='bg-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '500px'}}>
-      <MDBCardBody className='p-5 w-100 d-flex flex-column'>
-
-        <h2 className="fw-bold mb-2 text-center">Sign in</h2>
-        <p className="text-white-50 mb-3">Please enter your login and password!</p>
-
-        <MDBInput wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='email' size="lg"/>
-        <MDBInput wrapperClass='mb-4 w-100' label='Password' id='formControlLg' type='password' size="lg"/>
-
-
-        <MDBBtn size='lg'>
-          Login
-        </MDBBtn>
-
-        <hr className="my-4" />
-
-        <MDBBtn className="mb-2 w-100" size="lg" style={{backgroundColor: '#dd4b39'}}>
-          <MDBIcon fab icon="google" className="mx-2"/>
-          Sign in with google
-        </MDBBtn>
-
-        <MDBBtn className="mb-4 w-100" size="lg" style={{backgroundColor: '#3b5998'}}>
-          <MDBIcon fab icon="facebook-f" className="mx-2"/>
-          Sign in with facebook
-        </MDBBtn>
-
-        <p className='text-center'>Doesn't Have An Account ? <Link to={"/register"}>Register</Link></p>
-
-      </MDBCardBody>
-    </MDBCard>
-
-  </MDBCol>
-</MDBRow>
-
-</MDBContainer>
-    </>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password : </Form.Label>
+        <Form.Control type="password" placeholder="Password" />
+      </Form.Group>
+      
+      <Button style={{marginTop:"15px",width:"100%"}} variant="primary" type="submit">
+        Log In
+      </Button>
+      <p className='text-center mt-4 '>Not A User ? <Link to={"/register"} style={{textDecoration:"none"}}>Register</Link></p>
+    </Form>
+    </div>
+    
+    </div>
     
   )
 }

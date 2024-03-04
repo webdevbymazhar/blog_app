@@ -10,6 +10,7 @@ const AuthorLayout = ({children}) => {
 
    useEffect(()=>{
         if(!auth.token){
+            alert("token not specified")
             router("/")
         }
    },[auth.token,router])

@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+// import { Link } from 'react-router-dom'
+import CommonNavbar from '../components/Navbar'
+import HomeHeader from '../components/HomeHeader'
 
 const Home = () => {
   return (
     <div>
-      <Navbar/>
-      Welcome To BlogItUp !
-      <button><Link to={"/create-blog"}>Create Blog</Link></button>
+      <CommonNavbar/>
+      <HomeHeader/>
     </div>
   )
 }
